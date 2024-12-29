@@ -5,7 +5,7 @@
 }
 .backImg{
     width: 100%;
-    height: 100vh;
+    height: 130vh;
     background-image: url(leaf.jpg);
     -webkit-background-size: cover;
     background-size: cover;
@@ -21,7 +21,7 @@
     color: white;
 }
 .profile{
-    width: 360px;
+    width: 380px;
     background-color: rgba(0,0,0,0.5);
     padding: 30px 0;
     border-radius: 10%;
