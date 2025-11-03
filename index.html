@@ -1,45 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Tarang Karpe</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
-</head>
-<body>
-    <div class="backImg">
-        <div class="profile">
-            <img src="https://raw.githubusercontent.com/tarangkarpe/tarangkarpe.github.io/master/312055215_10160601886723319_9112974884910002691_n.jpg" alt="Profile Picture">
-            <div class="profiletext">
-                <h2>Tarang Karpe</h2>
-                <h3>Certified Vermiculture Expert 🐛</h3>
-                <br><p>🌱 Green Farming Advocate | 🎓 Biotechnology & Footwear Tech Graduate | 🏆 Certified in Vermicompost Production, 🌊 Biofloc, 💻 Full-Stack Web Dev, and 👨‍🌾 Farming 🌱 
-                    <br> <br> <a href="https://www.dropbox.com/scl/fi/ub5ixiryy1avboq15iggb/vcard_tarang_karpe.vcf?rlkey=more70xronznofmm6i2crt8if&dl=0" target="_blank"><i class="fa fa-phone fa-1x"></i></a><strong> <a href="tel:+919479872399">Click To Call</strong></a>
-                    <br> <a href="mailto:tarangkarpe@gmail.com" target="_blank"><i class="fa fa-at fa-1x"></i></a><strong> <a href="mailto:tarangkarpe@gmail.com"> tarangkarpe@gmail.com</strong></a>
-                    <br> <a href="https://www.facebook.com/profile.php?id=61552241507964&sk=about_details&viewas=100000686899395" target="_blank"><i class="fa fa-briefcase fa-1x"></i></a><strong>Tarang's Farm</strong>
-                    <br> <a href="https://maps.app.goo.gl/wxEGBw3MfDSNM2xm6" target="_blank"><i class="fa fa-map-marker fa-1x"></i></a><strong> <a href="https://maps.app.goo.gl/wxEGBw3MfDSNM2xm6"> Icchawar, Sehore</strong></a>
-                    <br> <a href="https://wa.me/+919479872399" target="_blank"><i class="fa fa-whatsapp fa-1x"></i></a><strong> <a href="https://wa.me/+919479872399">Click To Chat on WhatsApp</strong></a> 
-                    <br><br>
-<span class="cool">
-  ❝<strong>🌟 Hi there! 👋</strong><br><br>
-  For <strong>faster</strong> and more <strong>personalized service</strong>, feel free to message me on <strong>WhatsApp!</strong> 📲 It's my <strong>preferred mode of contact</strong>, and I’m always here to assist you with <strong>any questions</strong> or <strong>concerns</strong> you may have. Whether you're looking for <strong>premium organic products</strong>, need help with <strong>orders</strong>, or just want to chat about <strong>gardening</strong> and <strong>sustainable farming</strong> 🌱, I’m just a <strong>message away</strong>!<br><br>
-  💡 <strong>Fun fact:</strong> I’m always on the lookout for <strong>new ways</strong> to <strong>innovate</strong> in both <strong>farming</strong> and <strong>technology</strong>, blending my passion for <strong>green farming</strong> 🌿 with my love for <strong>web development</strong> 💻. I enjoy sharing <strong>insights</strong> and <strong>learning</strong> from fellow enthusiasts who share the same love for <strong>sustainability</strong>! 🌍✨<br><br>
-  <strong>Looking forward to connecting with you! 😊</strong><br><br>
-  Also, check out my latest rap song: <a href="https://t.ly/GgnDM" target="_blank">My Rap Song 🎤</a>  
-  ❞
-</span>
-</p>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarang’s Farm</title>
 
-            </div>
-            <div class="social">
-                <a href="https://www.facebook.com/tarang.karpe" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
-                <a href="https://www.instagram.com/lumosmaximazzz/" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
-                <a href="https://wa.me/+919479872399" target="_blank"><i class="fa fa-whatsapp fa-2x"></i></a>
-                <a href="https://in.linkedin.com/in/tarangkarpe" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
-                <a href="mailto:tarangkarpe@yahoo.co.in" target="_blank"><i class="fa fa-envelope fa-2x"></i></a>
-            </div>
-        </div>
+<!-- Fonts and Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* ===== Base ===== */
+body {
+  background: linear-gradient(135deg, #d4af37 0%, #a0cc52 100%);
+  background-attachment: fixed;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== Container ===== */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* ===== Flip Card ===== */
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 360px;
+  perspective: 1000px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(25, 25, 25, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-card-back {
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 18px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ===== Content ===== */
+.farm-logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  background: transparent;
+  object-fit: cover;
+}
+h2 {
+  margin: 8px 0 4px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+}
+.tagline {
+  font-style: italic;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+.intro, .back-text {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-align: center;
+  opacity: 0.95;
+  margin: 6px 0;
+}
+.highlight {
+  color: #fff176;
+  font-weight: 600;
+}
+.location {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin-top: 8px;
+}
+
+/* ===== Contact Icons ===== */
+.contact a {
+  color: #fff;
+  text-decoration: none;
+  margin: 8px;
+  font-size: 1.4rem;
+  transition: 0.3s;
+}
+.contact a:hover {
+  color: #fff176;
+}
+
+/* ===== Popup Video ===== */
+#videoPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+#videoPopup iframe {
+  width: 560px;
+  height: 315px;
+  border: none;
+  border-radius: 8px;
+}
+#closePopup {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+  #videoPopup iframe {
+    width: 90%;
+    height: 50%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== Video Popup ===== -->
+<div id="videoPopup">
+  <span id="closePopup">&times;</span>
+  <iframe src="https://www.youtube.com/embed/p0jSAJKjpXM?autoplay=1" allowfullscreen></iframe>
+</div>
+
+<script>
+document.getElementById("closePopup").onclick = function() {
+  document.getElementById("videoPopup").style.display = "none";
+};
+</script>
+
+<!-- ===== Row 1 ===== -->
+<div class="row">
+
+  <!-- Card 1 -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img class="farm-logo" src="https://raw.githubusercontent.com/tarangkarpe/tarangkarpe.github.io/master/312055215_10160601886723319_9112974884910002691_n.jpg" alt="Tarang Karpe">
+        <h2>Tarang Karpe</h2>
+        <p class="tagline">Organic • Scientific • Sustainable</p>
+        <p class="intro">Founder of a <b>2-acre organic farm</b> nurturing <b>RootAmrit Vermicompost</b>, <b>lemon orchards</b>, and <b>multilayer crops</b>.  
+        Drawing from <b>retail & management</b> experience to create a self-sustaining ecosystem.</p>
+      </div>
+      <div class="flip-card-back">
+        <p class="back-text">Tarang combines scientific knowledge and business management to lead Tarang’s Farm toward regenerative, scalable agriculture.</p>
+      </div>
     </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <i class="fa-solid fa-graduation-cap fa-3x" style="color:#fff176;margin-bottom:12px;"></i>
+        <h2>Education</h2>
+        <p class="tagline">Strong Scientific Foundation</p>
+        <p class="intro">B.Sc. in Biotechnology (Bangalore University)  
+        M.Sc. in Footwear Production (Polymer Science – FDDI Noida)  
+        MBA in Footwear Design & Production Management (FDDI Noida)</p>
+      </div>
+      <div class="flip-card-back">
+        <p class="back-text">A multidisciplinary background in <b>science, production, and management</b> powers Tarang’s innovative approach to sustainable agriculture.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <i class="fa-solid fa-certificate fa-3x" style="color:#fff176;margin-bottom:12px;"></i>
+        <h2>Certifications</h2>
+        <p class="tagline">Applied Knowledge, Proven Skills</p>
+        <p class="intro">Certified in Vermicomposting, Biofloc Fish Production, VBA Development, Advanced Excel, Full-Stack Web Development, and Poultry Disease Management.</p>
+      </div>
+      <div class="flip-card-back">
+        <p class="back-text">Blending <b>technology and organic science</b> to modernize Indian agriculture from grassroots to digital growth.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== Row 2 ===== -->
+<div class="row">
+
+  <!-- Card 4 -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <i class="fa-solid fa-seedling fa-3x" style="color:#fff176;margin-bottom:12px;"></i>
+        <h2>Innovation</h2>
+        <p class="tagline">Future of Organic Farming</p>
+        <p class="intro">Developing a <b>plant tissue culture lab</b> and <b>indoor nursery</b> for healthy, high-yield plants.  
+        Integrating sensors, automation, and precision growth techniques.</p>
+      </div>
+      <div class="flip-card-back">
+        <p class="back-text">Fusing <b>data, AI, and sustainability</b> to push agriculture beyond traditional limits.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <i class="fa-solid fa-laptop-code fa-3x" style="color:#fff176;margin-bottom:12px;"></i>
+        <h2>Tech & Creativity</h2>
+        <p class="tagline">Where Code Meets Cultivation</p>
+        <p class="intro">From <b>RootAmrit branding</b> to <b>AI-assisted plant tracking</b>, Tarang builds his farm’s digital presence with modern tools.</p>
+      </div>
+      <div class="flip-card-back">
+        <p class="back-text">Technology is not separate from soil — it’s what makes Tarang’s Farm future-ready.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <!-- FRONT -->
+    <div class="flip-card-front">
+      <i class="fa-solid fa-id-badge" style="font-size:64px; color:#FFD700; margin-bottom:12px;"></i>
+      <h2>Connect</h2>
+      <p class="tagline">Digital Visiting Card</p>
+    </div>
+
+    <!-- BACK -->
+    <div class="flip-card-back">
+      <h3>Let's Collaborate</h3>
+      <p class="back-text" style="max-width:260px; margin:auto;">
+        Passionate about blending agriculture, science, and sustainability.<br>
+        <b>Email:</b> tarangkarpe@gmail.com<br>
+        <b>Website:</b> <a href="https://tarangkarpe.github.io" target="_blank" style="color:#b8f1b0;">tarangkarpe.github.io</a>
+      </p>
+
+      <div class="contact" style="display:flex; justify-content:center; gap:18px; margin-top:16px; font-size:1.6rem;">
+        <a href="https://wa.me/917000338275" target="_blank" style="color:#25D366;"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://wa.me/919479872399" target="_blank" style="color:#f1f1f1;"><i class="fa-solid fa-phone"></i></a>
+        <a href="mailto:tarangkarpe@gmail.com" target="_blank" style="color:#d4af37;"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://tarangkarpe.github.io" target="_blank" style="color:#b8f1b0;"><i class="fa-solid fa-globe"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
 </body>
 </html>
