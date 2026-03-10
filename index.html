@@ -10,35 +10,22 @@
 
 <style>
 
-/* ================= BACKGROUND ================= */
+/* ---------- BODY ---------- */
 
 body{
 background:linear-gradient(140deg,#020617,#0f172a,#1e3a8a);
-background-size:400% 400%;
-animation:bgMove 14s ease infinite;
-
 font-family:'Poppins',sans-serif;
 color:white;
-
 margin:0;
-padding:60px 20px;
-
+padding:80px 40px;
 display:flex;
 flex-direction:column;
 align-items:center;
-gap:50px;
-
 min-height:100vh;
 overflow-x:hidden;
 }
 
-@keyframes bgMove{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
-
-/* ================= FIRELIES ================= */
+/* ---------- FIRELIES ---------- */
 
 #fireflies{
 position:fixed;
@@ -50,74 +37,55 @@ z-index:-1;
 pointer-events:none;
 }
 
-/* ================= HERO ================= */
+/* ---------- HERO ---------- */
 
 .hero{
 text-align:center;
 max-width:700px;
+margin-bottom:80px;
 }
 
 .hero h1{
-font-size:2.6rem;
-margin:0;
+font-size:2.7rem;
 color:#3ea6ff;
-
-text-shadow:
-0 0 5px #3ea6ff,
-0 0 10px #3ea6ff,
-0 0 20px #1e90ff,
-0 0 40px #1e90ff;
+text-shadow:0 0 10px #3ea6ff,0 0 20px #1e90ff;
 }
 
 .hero p{
-margin-top:12px;
-font-size:1rem;
 opacity:.9;
+margin:8px 0;
 }
 
-.power{
-font-size:28px;
-margin-left:10px;
-color:#3ea6ff;
-text-shadow:0 0 10px #3ea6ff;
-}
-
-/* ================= GRID ================= */
+/* ---------- GRID ---------- */
 
 .cards{
-
 display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(260px,1fr));
-
-gap:40px;
-
-max-width:1100px;
-width:100%;
-
+grid-template-columns:repeat(3,300px);
+gap:80px;
+justify-content:center;
 }
 
-/* ================= CARD ================= */
+/* ---------- CARD ---------- */
 
 .flip-card{
-
-width:100%;
+width:300px;
 height:360px;
-
-perspective:1000px;
-
+perspective:1200px;
+position:relative;
 }
 
 .flip-card-inner{
-
 position:relative;
 width:100%;
 height:100%;
-
 transition:transform .8s;
 transform-style:preserve-3d;
+}
 
+/* bring card above others during flip */
+
+.flip-card:hover{
+z-index:5;
 }
 
 .flip-card:hover .flip-card-inner{
@@ -126,89 +94,49 @@ transform:rotateY(180deg);
 
 .flip-card-front,
 .flip-card-back{
-
 position:absolute;
 width:100%;
 height:100%;
-
-border-radius:16px;
-
+border-radius:18px;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-
-padding:22px;
-
-background:rgba(0,0,0,.65);
-
-border:1px solid rgba(255,255,255,.15);
-
-box-shadow:0 8px 22px rgba(0,0,0,.7);
-
+padding:24px;
+background:rgba(0,0,0,.7);
+border:1px solid rgba(255,255,255,.2);
+box-shadow:0 10px 30px rgba(0,0,0,.7);
 backface-visibility:hidden;
-
+text-align:center;
 }
 
 .flip-card-back{
-background:rgba(0,0,0,.95);
 transform:rotateY(180deg);
+background:rgba(0,0,0,.95);
 }
 
-/* glow */
-
-.flip-card-front::before{
-
-content:"";
-position:absolute;
-
-top:-1px;
-left:-1px;
-right:-1px;
-bottom:-1px;
-
-border-radius:16px;
-
-background:linear-gradient(45deg,#1e3a8a,#3ea6ff,#facc15);
-
-opacity:.25;
-
-z-index:-1;
-
-}
-
-/* ================= CONTENT ================= */
-
-.farm-logo{
-
-width:70px;
-height:70px;
-
-border-radius:50%;
-
-border:2px solid #facc15;
-
-margin-bottom:10px;
-
-}
-
-h2{
-margin:6px 0;
-}
+/* ---------- CONTENT ---------- */
 
 .tagline{
 color:#facc15;
 font-style:italic;
+margin-bottom:8px;
 }
 
-.intro,
-.back-text{
+.intro,.back-text{
 font-size:.9rem;
 line-height:1.45;
-text-align:center;
 }
 
-/* ================= CONTACT ================= */
+.farm-logo{
+width:70px;
+height:70px;
+border-radius:50%;
+border:2px solid #facc15;
+margin-bottom:10px;
+}
+
+/* ---------- CONTACT ---------- */
 
 .contact a{
 color:white;
@@ -220,7 +148,7 @@ font-size:1.4rem;
 color:#facc15;
 }
 
-/* ================= POPUP ================= */
+/* ---------- VIDEO POPUP ---------- */
 
 #videoPopup{
 position:fixed;
@@ -228,13 +156,10 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-
-background:rgba(0,0,0,.95);
-
+background:rgba(0,0,0,.9);
 display:flex;
 justify-content:center;
 align-items:center;
-
 z-index:9999;
 }
 
@@ -250,14 +175,26 @@ position:absolute;
 top:20px;
 right:30px;
 font-size:2rem;
+color:white;
 cursor:pointer;
 }
 
-@media(max-width:600px){
+/* ---------- MOBILE ---------- */
 
-#videoPopup iframe{
-width:90%;
-height:50%;
+@media(max-width:1100px){
+
+.cards{
+grid-template-columns:repeat(2,300px);
+gap:70px;
+}
+
+}
+
+@media(max-width:700px){
+
+.cards{
+grid-template-columns:1fr;
+gap:60px;
 }
 
 }
@@ -269,23 +206,6 @@ height:50%;
 
 <canvas id="fireflies"></canvas>
 
-<!-- HERO -->
-
-<div class="hero">
-
-<h1>
-Welcome!
-<i class="fa-solid fa-plug power"></i>
-</h1>
-
-<p>If you came here for serious corporate energy… you might be slightly lost.</p>
-
-<p>This page contains plants 🌱, experiments 🧠, coding 💻, curiosity 🤔 and a healthy amount of cat memes 😺</p>
-
-<p>Hi, I'm Tarang.</p>
-
-</div>
-
 <!-- VIDEO POPUP -->
 
 <div id="videoPopup">
@@ -293,11 +213,23 @@ Welcome!
 <iframe src="https://www.youtube.com/embed/p0jSAJKjpXM?autoplay=1"></iframe>
 </div>
 
-<!-- CARDS -->
+<!-- HERO -->
+
+<div class="hero">
+
+<h1>Welcome! 🔌</h1>
+
+<p>If you came here for serious corporate energy… you might be slightly lost.</p>
+
+<p>This page contains plants 🌱 experiments 🧠 coding 💻 curiosity 🤔 and a healthy amount of cat memes 😺</p>
+
+<p>Hi, I'm Tarang.</p>
+
+</div>
 
 <div class="cards">
 
-<!-- CARD -->
+<!-- CARD 1 -->
 
 <div class="flip-card">
 <div class="flip-card-inner">
@@ -312,11 +244,13 @@ src="https://raw.githubusercontent.com/tarangkarpe/tarangkarpe.github.io/master/
 <p class="tagline">Curiosity Powered Human</p>
 
 <p class="intro">
-Sometimes growing flowers 🌼  
-Sometimes writing code 💻  
-Sometimes cooking food that mysteriously attracts friends 🍲  
+
+Some days I’m growing plants 🌱  
+Some days I’m coding things 💻  
+Some days I’m cooking experiments 🍲  
 
 And occasionally reviewing cat memes for quality control 😺
+
 </p>
 
 </div>
@@ -324,15 +258,17 @@ And occasionally reviewing cat memes for quality control 😺
 <div class="flip-card-back">
 
 <p class="back-text">
-Things I enjoy:
 
-🌿 Nature experiments  
-🎧 Music from different cultures  
-🎬 Animated movies  
-🍳 Cooking  
-😺 Cat memes  
+Things I genuinely enjoy:
 
-Curiosity is my main hobby.
+🌿 experimenting with plants  
+🎧 music from many cultures  
+🎬 animated movies  
+🍳 cooking  
+😺 cat memes  
+
+Life = curiosity + experiments.
+
 </p>
 
 </div>
@@ -340,7 +276,7 @@ Curiosity is my main hobby.
 </div>
 </div>
 
-<!-- CARD -->
+<!-- CARD 2 -->
 
 <div class="flip-card">
 <div class="flip-card-inner">
@@ -352,11 +288,13 @@ Curiosity is my main hobby.
 <h2>Education</h2>
 
 <p class="intro">
+
 🎓 B.Sc Biotechnology  
 🎓 M.Sc Polymer Chemistry  
 🎓 PGDM Production & Operations  
 
-Basically learning how things work.
+Understanding how things work is fun.
+
 </p>
 
 </div>
@@ -364,14 +302,16 @@ Basically learning how things work.
 <div class="flip-card-back">
 
 <p class="back-text">
-Currently exploring:
 
-📈 Trading  
+Currently learning:
+
+📈 Trading markets  
 🧘 7 Chakras – Yoga  
 🌱 Aquaponics  
 🎬 Video production  
 
-Learning never stops.
+Curiosity never retires.
+
 </p>
 
 </div>
@@ -379,7 +319,7 @@ Learning never stops.
 </div>
 </div>
 
-<!-- CARD -->
+<!-- CARD 3 -->
 
 <div class="flip-card">
 <div class="flip-card-inner">
@@ -391,12 +331,14 @@ Learning never stops.
 <h2>Skills</h2>
 
 <p class="intro">
+
 🌱 Vermicomposting  
 🐟 Biofloc fish culture  
-💻 Full stack development  
-📊 Excel & VBA  
+💻 Full stack web development  
+📊 Advanced Excel & VBA  
 
 Yes… it's a strange mix.
+
 </p>
 
 </div>
@@ -404,11 +346,14 @@ Yes… it's a strange mix.
 <div class="flip-card-back">
 
 <p class="back-text">
-Favorite skill:
 
-Curiosity.
+Favorite skill: curiosity.
 
-If I don't know something I try to figure it out.
+If I don’t know something I try to figure it out.
+
+Sometimes learning happens…  
+Sometimes YouTube rabbit holes happen.
+
 </p>
 
 </div>
@@ -416,7 +361,7 @@ If I don't know something I try to figure it out.
 </div>
 </div>
 
-<!-- CARD -->
+<!-- CARD 4 -->
 
 <div class="flip-card">
 <div class="flip-card-inner">
@@ -428,11 +373,13 @@ If I don't know something I try to figure it out.
 <h2>Horticulture</h2>
 
 <p class="intro">
+
 🍋 Lemon orchard  
 🌼 Marigold  
 🌸 Chrysanthemum  
 
 Plants quietly teach patience.
+
 </p>
 
 </div>
@@ -440,13 +387,15 @@ Plants quietly teach patience.
 <div class="flip-card-back">
 
 <p class="back-text">
-Future ideas:
 
-🌱 Nursery  
-🧪 Tissue culture  
-🌿 Aquaponics
+Future ideas growing:
 
-Growing plants and ideas.
+🌱 Plant nursery  
+🧪 Tissue culture lab  
+🌿 Aquaponics  
+
+Growing plants and ideas together.
+
 </p>
 
 </div>
@@ -454,7 +403,7 @@ Growing plants and ideas.
 </div>
 </div>
 
-<!-- CARD -->
+<!-- CARD 5 -->
 
 <div class="flip-card">
 <div class="flip-card-inner">
@@ -466,10 +415,12 @@ Growing plants and ideas.
 <h2>Tech Side</h2>
 
 <p class="intro">
+
 Morning → plants 🌱  
 Night → coding 💻  
 
-Technology meets farming.
+Technology and nature actually work well together.
+
 </p>
 
 </div>
@@ -477,12 +428,16 @@ Technology meets farming.
 <div class="flip-card-back">
 
 <p class="back-text">
+
 Ideas I enjoy:
 
-📊 data driven farming  
+📊 data-driven farming  
 🤖 automation  
 📱 digital tools  
-🎬 storytelling
+🎬 video storytelling  
+
+Waiting for video exports builds patience.
+
 </p>
 
 </div>
@@ -490,7 +445,7 @@ Ideas I enjoy:
 </div>
 </div>
 
-<!-- CARD -->
+<!-- CARD 6 -->
 
 <div class="flip-card">
 <div class="flip-card-inner">
@@ -502,14 +457,16 @@ Ideas I enjoy:
 <h2>Connect</h2>
 
 <p class="intro">
+
 If you enjoy
 
 🌱 agriculture  
 💡 ideas  
-💻 tech  
+💻 technology  
 😺 memes
 
-we will get along.
+we will probably get along.
+
 </p>
 
 </div>
@@ -521,7 +478,6 @@ we will get along.
 <div class="contact">
 
 <a href="https://wa.me/917000338275"><i class="fa-brands fa-whatsapp"></i></a>
-<a href="https://wa.me/919479872399"><i class="fa-solid fa-phone"></i></a>
 <a href="mailto:tarangkarpe@gmail.com"><i class="fa-solid fa-envelope"></i></a>
 <a href="https://tarangkarpe.github.io"><i class="fa-solid fa-globe"></i></a>
 
@@ -536,13 +492,13 @@ we will get along.
 
 <script>
 
-/* popup */
+/* CLOSE VIDEO */
 
 document.getElementById("closePopup").onclick=function(){
 document.getElementById("videoPopup").style.display="none";
 };
 
-/* fireflies */
+/* FIREFLIES */
 
 const canvas=document.getElementById("fireflies");
 const ctx=canvas.getContext("2d");
