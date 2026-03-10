@@ -3,313 +3,591 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tarang’s Karpe</title>
+<title>Tarang Karpe</title>
 
-<!-- Fonts and Icons -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-/* ===== Base ===== */
-body {
-  background: linear-gradient(135deg, #d4af37 0%, #a0cc52 100%);
-  background-attachment: fixed;
-  font-family: 'Poppins', sans-serif;
-  color: #fff;
-  margin: 0;
-  padding: 60px 0;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  min-height: 100vh;
-  overflow-x: hidden;
+
+/* ================= BACKGROUND ================= */
+
+body{
+background:linear-gradient(140deg,#020617,#0f172a,#1e3a8a);
+background-size:400% 400%;
+animation:bgMove 14s ease infinite;
+
+font-family:'Poppins',sans-serif;
+color:white;
+
+margin:0;
+padding:60px 20px;
+
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:50px;
+
+min-height:100vh;
+overflow-x:hidden;
 }
 
-/* ===== Container ===== */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
-/* ===== Flip Card ===== */
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 360px;
-  perspective: 1000px;
+/* ================= FIRELIES ================= */
+
+#fireflies{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+pointer-events:none;
 }
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
+
+/* ================= HERO ================= */
+
+.hero{
+text-align:center;
+max-width:700px;
 }
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
+
+.hero h1{
+font-size:2.6rem;
+margin:0;
+color:#3ea6ff;
+
+text-shadow:
+0 0 5px #3ea6ff,
+0 0 10px #3ea6ff,
+0 0 20px #1e90ff,
+0 0 40px #1e90ff;
 }
+
+.hero p{
+margin-top:12px;
+font-size:1rem;
+opacity:.9;
+}
+
+.power{
+font-size:28px;
+margin-left:10px;
+color:#3ea6ff;
+text-shadow:0 0 10px #3ea6ff;
+}
+
+/* ================= GRID ================= */
+
+.cards{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(260px,1fr));
+
+gap:40px;
+
+max-width:1100px;
+width:100%;
+
+}
+
+/* ================= CARD ================= */
+
+.flip-card{
+
+width:100%;
+height:360px;
+
+perspective:1000px;
+
+}
+
+.flip-card-inner{
+
+position:relative;
+width:100%;
+height:100%;
+
+transition:transform .8s;
+transform-style:preserve-3d;
+
+}
+
+.flip-card:hover .flip-card-inner{
+transform:rotateY(180deg);
+}
+
 .flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  box-sizing: border-box;
-  background: rgba(25, 25, 25, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.flip-card-back {
-  background: rgba(0, 0, 0, 0.85);
-  color: white;
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border-radius: 18px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+.flip-card-back{
+
+position:absolute;
+width:100%;
+height:100%;
+
+border-radius:16px;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+padding:22px;
+
+background:rgba(0,0,0,.65);
+
+border:1px solid rgba(255,255,255,.15);
+
+box-shadow:0 8px 22px rgba(0,0,0,.7);
+
+backface-visibility:hidden;
+
 }
 
-/* ===== Content ===== */
-.farm-logo {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  margin-bottom: 12px;
-  background: transparent;
-  object-fit: cover;
-}
-h2 {
-  margin: 8px 0 4px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #fff;
-}
-.tagline {
-  font-style: italic;
-  opacity: 0.9;
-  margin-bottom: 8px;
-}
-.intro, .back-text {
-  font-size: 0.9rem;
-  line-height: 1.45;
-  text-align: center;
-  opacity: 0.95;
-  margin: 6px 0;
-}
-.highlight {
-  color: #fff176;
-  font-weight: 600;
-}
-.location {
-  font-size: 0.85rem;
-  opacity: 0.85;
-  margin-top: 8px;
+.flip-card-back{
+background:rgba(0,0,0,.95);
+transform:rotateY(180deg);
 }
 
-/* ===== Contact Icons ===== */
-.contact a {
-  color: #fff;
-  text-decoration: none;
-  margin: 8px;
-  font-size: 1.4rem;
-  transition: 0.3s;
-}
-.contact a:hover {
-  color: #fff176;
+/* glow */
+
+.flip-card-front::before{
+
+content:"";
+position:absolute;
+
+top:-1px;
+left:-1px;
+right:-1px;
+bottom:-1px;
+
+border-radius:16px;
+
+background:linear-gradient(45deg,#1e3a8a,#3ea6ff,#facc15);
+
+opacity:.25;
+
+z-index:-1;
+
 }
 
-/* ===== Popup Video ===== */
-#videoPopup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-#videoPopup iframe {
-  width: 560px;
-  height: 315px;
-  border: none;
-  border-radius: 8px;
-}
-#closePopup {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  font-weight: 600;
+/* ================= CONTENT ================= */
+
+.farm-logo{
+
+width:70px;
+height:70px;
+
+border-radius:50%;
+
+border:2px solid #facc15;
+
+margin-bottom:10px;
+
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .row {
-    flex-direction: column;
-    align-items: center;
-  }
-  #videoPopup iframe {
-    width: 90%;
-    height: 50%;
-  }
+h2{
+margin:6px 0;
 }
+
+.tagline{
+color:#facc15;
+font-style:italic;
+}
+
+.intro,
+.back-text{
+font-size:.9rem;
+line-height:1.45;
+text-align:center;
+}
+
+/* ================= CONTACT ================= */
+
+.contact a{
+color:white;
+margin:8px;
+font-size:1.4rem;
+}
+
+.contact a:hover{
+color:#facc15;
+}
+
+/* ================= POPUP ================= */
+
+#videoPopup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.95);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+z-index:9999;
+}
+
+#videoPopup iframe{
+width:560px;
+height:315px;
+border:none;
+border-radius:8px;
+}
+
+#closePopup{
+position:absolute;
+top:20px;
+right:30px;
+font-size:2rem;
+cursor:pointer;
+}
+
+@media(max-width:600px){
+
+#videoPopup iframe{
+width:90%;
+height:50%;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- ===== Video Popup ===== -->
+<canvas id="fireflies"></canvas>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<h1>
+Welcome!
+<i class="fa-solid fa-plug power"></i>
+</h1>
+
+<p>If you came here for serious corporate energy… you might be slightly lost.</p>
+
+<p>This page contains plants 🌱, experiments 🧠, coding 💻, curiosity 🤔 and a healthy amount of cat memes 😺</p>
+
+<p>Hi, I'm Tarang.</p>
+
+</div>
+
+<!-- VIDEO POPUP -->
+
 <div id="videoPopup">
-  <span id="closePopup">&times;</span>
-  <iframe src="https://www.youtube.com/embed/p0jSAJKjpXM?autoplay=1" allowfullscreen></iframe>
+<span id="closePopup">&times;</span>
+<iframe src="https://www.youtube.com/embed/p0jSAJKjpXM?autoplay=1"></iframe>
+</div>
+
+<!-- CARDS -->
+
+<div class="cards">
+
+<!-- CARD -->
+
+<div class="flip-card">
+<div class="flip-card-inner">
+
+<div class="flip-card-front">
+
+<img class="farm-logo"
+src="https://raw.githubusercontent.com/tarangkarpe/tarangkarpe.github.io/master/312055215_10160601886723319_9112974884910002691_n.jpg">
+
+<h2>Tarang Karpe</h2>
+
+<p class="tagline">Curiosity Powered Human</p>
+
+<p class="intro">
+Sometimes growing flowers 🌼  
+Sometimes writing code 💻  
+Sometimes cooking food that mysteriously attracts friends 🍲  
+
+And occasionally reviewing cat memes for quality control 😺
+</p>
+
+</div>
+
+<div class="flip-card-back">
+
+<p class="back-text">
+Things I enjoy:
+
+🌿 Nature experiments  
+🎧 Music from different cultures  
+🎬 Animated movies  
+🍳 Cooking  
+😺 Cat memes  
+
+Curiosity is my main hobby.
+</p>
+
+</div>
+
+</div>
+</div>
+
+<!-- CARD -->
+
+<div class="flip-card">
+<div class="flip-card-inner">
+
+<div class="flip-card-front">
+
+<i class="fa-solid fa-graduation-cap fa-3x" style="color:#facc15"></i>
+
+<h2>Education</h2>
+
+<p class="intro">
+🎓 B.Sc Biotechnology  
+🎓 M.Sc Polymer Chemistry  
+🎓 PGDM Production & Operations  
+
+Basically learning how things work.
+</p>
+
+</div>
+
+<div class="flip-card-back">
+
+<p class="back-text">
+Currently exploring:
+
+📈 Trading  
+🧘 7 Chakras – Yoga  
+🌱 Aquaponics  
+🎬 Video production  
+
+Learning never stops.
+</p>
+
+</div>
+
+</div>
+</div>
+
+<!-- CARD -->
+
+<div class="flip-card">
+<div class="flip-card-inner">
+
+<div class="flip-card-front">
+
+<i class="fa-solid fa-certificate fa-3x" style="color:#facc15"></i>
+
+<h2>Skills</h2>
+
+<p class="intro">
+🌱 Vermicomposting  
+🐟 Biofloc fish culture  
+💻 Full stack development  
+📊 Excel & VBA  
+
+Yes… it's a strange mix.
+</p>
+
+</div>
+
+<div class="flip-card-back">
+
+<p class="back-text">
+Favorite skill:
+
+Curiosity.
+
+If I don't know something I try to figure it out.
+</p>
+
+</div>
+
+</div>
+</div>
+
+<!-- CARD -->
+
+<div class="flip-card">
+<div class="flip-card-inner">
+
+<div class="flip-card-front">
+
+<i class="fa-solid fa-seedling fa-3x" style="color:#facc15"></i>
+
+<h2>Horticulture</h2>
+
+<p class="intro">
+🍋 Lemon orchard  
+🌼 Marigold  
+🌸 Chrysanthemum  
+
+Plants quietly teach patience.
+</p>
+
+</div>
+
+<div class="flip-card-back">
+
+<p class="back-text">
+Future ideas:
+
+🌱 Nursery  
+🧪 Tissue culture  
+🌿 Aquaponics
+
+Growing plants and ideas.
+</p>
+
+</div>
+
+</div>
+</div>
+
+<!-- CARD -->
+
+<div class="flip-card">
+<div class="flip-card-inner">
+
+<div class="flip-card-front">
+
+<i class="fa-solid fa-laptop-code fa-3x" style="color:#facc15"></i>
+
+<h2>Tech Side</h2>
+
+<p class="intro">
+Morning → plants 🌱  
+Night → coding 💻  
+
+Technology meets farming.
+</p>
+
+</div>
+
+<div class="flip-card-back">
+
+<p class="back-text">
+Ideas I enjoy:
+
+📊 data driven farming  
+🤖 automation  
+📱 digital tools  
+🎬 storytelling
+</p>
+
+</div>
+
+</div>
+</div>
+
+<!-- CARD -->
+
+<div class="flip-card">
+<div class="flip-card-inner">
+
+<div class="flip-card-front">
+
+<i class="fa-solid fa-id-badge fa-3x" style="color:#facc15"></i>
+
+<h2>Connect</h2>
+
+<p class="intro">
+If you enjoy
+
+🌱 agriculture  
+💡 ideas  
+💻 tech  
+😺 memes
+
+we will get along.
+</p>
+
+</div>
+
+<div class="flip-card-back">
+
+<p>Email: tarangkarpe@gmail.com</p>
+
+<div class="contact">
+
+<a href="https://wa.me/917000338275"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="https://wa.me/919479872399"><i class="fa-solid fa-phone"></i></a>
+<a href="mailto:tarangkarpe@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+<a href="https://tarangkarpe.github.io"><i class="fa-solid fa-globe"></i></a>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 
 <script>
-document.getElementById("closePopup").onclick = function() {
-  document.getElementById("videoPopup").style.display = "none";
+
+/* popup */
+
+document.getElementById("closePopup").onclick=function(){
+document.getElementById("videoPopup").style.display="none";
 };
+
+/* fireflies */
+
+const canvas=document.getElementById("fireflies");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<50;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2+1,
+dx:(Math.random()-.5)*.4,
+dy:(Math.random()-.5)*.4
+});
+}
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="rgba(255,255,200,.7)";
+
+particles.forEach(p=>{
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+
+p.x+=p.dx;
+p.y+=p.dy;
+
+if(p.x<0||p.x>canvas.width)p.dx*=-1;
+if(p.y<0||p.y>canvas.height)p.dy*=-1;
+
+});
+
+requestAnimationFrame(draw);
+}
+
+draw();
+
 </script>
 
-<!-- ===== Row 1 ===== -->
-<div class="row">
-
-  <!-- Card 1 -->
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <img class="farm-logo" src="https://raw.githubusercontent.com/tarangkarpe/tarangkarpe.github.io/master/312055215_10160601886723319_9112974884910002691_n.jpg" alt="Tarang Karpe">
-        <h2>Tarang Karpe</h2>
-        <p class="tagline">Organic • Scientific • Sustainable</p>
-        <p class="intro">Founder of a <b>2-acre organic farm</b> nurturing <b>RootAmrit Vermicompost</b>, <b>lemon orchards</b>, and <b>multilayer crops</b>.  
-        Drawing from <b>retail & management</b> experience to create a self-sustaining ecosystem.</p>
-      </div>
-      <div class="flip-card-back">
-        <p class="back-text">Tarang combines scientific knowledge and business management to lead Tarang’s Farm toward regenerative, scalable agriculture.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <i class="fa-solid fa-graduation-cap fa-3x" style="color:#fff176;margin-bottom:12px;"></i>
-        <h2>Education</h2>
-        <p class="tagline">Strong Scientific Foundation</p>
-        <p class="intro">B.Sc. in Biotechnology (Bangalore University)  
-        M.Sc. in Footwear Production (Polymer Science – FDDI Noida)  
-        MBA in Footwear Design & Production Management (FDDI Noida)</p>
-      </div>
-      <div class="flip-card-back">
-        <p class="back-text">A multidisciplinary background in <b>science, production, and management</b> powers Tarang’s innovative approach to sustainable agriculture.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 3 -->
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <i class="fa-solid fa-certificate fa-3x" style="color:#fff176;margin-bottom:12px;"></i>
-        <h2>Certifications</h2>
-        <p class="tagline">Applied Knowledge, Proven Skills</p>
-        <p class="intro">Certified in Vermicomposting, Biofloc Fish Production, VBA Development, Advanced Excel, Full-Stack Web Development, and Poultry Disease Management.</p>
-      </div>
-      <div class="flip-card-back">
-        <p class="back-text">Blending <b>technology and organic science</b> to modernize Indian agriculture from grassroots to digital growth.</p>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- ===== Row 2 ===== -->
-<div class="row">
-
-  <!-- Card 4 -->
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <i class="fa-solid fa-seedling fa-3x" style="color:#fff176;margin-bottom:12px;"></i>
-        <h2>Innovation</h2>
-        <p class="tagline">Future of Organic Farming</p>
-        <p class="intro">Developing a <b>plant tissue culture lab</b> and <b>indoor nursery</b> for healthy, high-yield plants.  
-        Integrating sensors, automation, and precision growth techniques.</p>
-      </div>
-      <div class="flip-card-back">
-        <p class="back-text">Fusing <b>data, AI, and sustainability</b> to push agriculture beyond traditional limits.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 5 -->
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <i class="fa-solid fa-laptop-code fa-3x" style="color:#fff176;margin-bottom:12px;"></i>
-        <h2>Tech & Creativity</h2>
-        <p class="tagline">Where Code Meets Cultivation</p>
-        <p class="intro">From <b>RootAmrit branding</b> to <b>AI-assisted plant tracking</b>, Tarang builds his farm’s digital presence with modern tools.</p>
-      </div>
-      <div class="flip-card-back">
-        <p class="back-text">Technology is not separate from soil — it’s what makes Tarang’s Farm future-ready.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 6 -->
-<div class="flip-card">
-  <div class="flip-card-inner">
-    <!-- FRONT -->
-    <div class="flip-card-front">
-      <i class="fa-solid fa-id-badge" style="font-size:64px; color:#FFD700; margin-bottom:12px;"></i>
-      <h2>Connect</h2>
-      <p class="tagline">Digital Visiting Card</p>
-    </div>
-
-    <!-- BACK -->
-    <div class="flip-card-back">
-      <h3>Let's Collaborate</h3>
-      <p class="back-text" style="max-width:260px; margin:auto;">
-        Passionate about blending agriculture, science, and sustainability.<br>
-        <b>Email:</b> tarangkarpe@gmail.com<br>
-        <b>Website:</b> <a href="https://tarangkarpe.github.io" target="_blank" style="color:#b8f1b0;">tarangkarpe.github.io</a>
-      </p>
-
-      <div class="contact" style="display:flex; justify-content:center; gap:18px; margin-top:16px; font-size:1.6rem;">
-        <a href="https://wa.me/917000338275" target="_blank" style="color:#25D366;"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://wa.me/919479872399" target="_blank" style="color:#f1f1f1;"><i class="fa-solid fa-phone"></i></a>
-        <a href="mailto:tarangkarpe@gmail.com" target="_blank" style="color:#d4af37;"><i class="fa-solid fa-envelope"></i></a>
-        <a href="https://tarangkarpe.github.io" target="_blank" style="color:#b8f1b0;"><i class="fa-solid fa-globe"></i></a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-</div>
 </body>
 </html>
