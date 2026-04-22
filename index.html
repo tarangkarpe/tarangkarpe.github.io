@@ -1,549 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tarang Karpe</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>Tarang Karpe | Fire & Innovation</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 <style>
-
-/* ---------- BODY ---------- */
-
-body{
-background:linear-gradient(140deg,#020617,#0f172a,#1e3a8a);
-font-family:'Poppins',sans-serif;
-color:white;
-margin:0;
-padding:80px 40px;
-display:flex;
-flex-direction:column;
-align-items:center;
-min-height:100vh;
-overflow-x:hidden;
-}
-
-/* ---------- FIRELIES ---------- */
-
-#fireflies{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-1;
-pointer-events:none;
-}
-
-/* ---------- HERO ---------- */
-
-.hero{
-text-align:center;
-max-width:700px;
-margin-bottom:80px;
-}
-
-.hero h1{
-font-size:2.7rem;
-color:#3ea6ff;
-text-shadow:0 0 10px #3ea6ff,0 0 20px #1e90ff;
-}
-
-.hero p{
-opacity:.9;
-margin:8px 0;
-}
-
-/* ---------- GRID ---------- */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(3,300px);
-gap:80px;
-justify-content:center;
-}
-
-/* ---------- CARD ---------- */
-
-.flip-card{
-width:300px;
-height:360px;
-perspective:1200px;
-position:relative;
-}
-
-.flip-card-inner{
-position:relative;
-width:100%;
-height:100%;
-transition:transform .8s;
-transform-style:preserve-3d;
-}
-
-/* bring card above others during flip */
-
-.flip-card:hover{
-z-index:5;
-}
-
-.flip-card:hover .flip-card-inner{
-transform:rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back{
-position:absolute;
-width:100%;
-height:100%;
-border-radius:18px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:24px;
-background:rgba(0,0,0,.7);
-border:1px solid rgba(255,255,255,.2);
-box-shadow:0 10px 30px rgba(0,0,0,.7);
-backface-visibility:hidden;
-text-align:center;
-}
-
-.flip-card-back{
-transform:rotateY(180deg);
-background:rgba(0,0,0,.95);
-}
-
-/* ---------- CONTENT ---------- */
-
-.tagline{
-color:#facc15;
-font-style:italic;
-margin-bottom:8px;
-}
-
-.intro,.back-text{
-font-size:.9rem;
-line-height:1.45;
-}
-
-.farm-logo{
-width:70px;
-height:70px;
-border-radius:50%;
-border:2px solid #facc15;
-margin-bottom:10px;
-}
-
-/* ---------- CONTACT ---------- */
-
-.contact a{
-color:white;
-margin:8px;
-font-size:1.4rem;
-}
-
-.contact a:hover{
-color:#facc15;
-}
-
-/* ---------- VIDEO POPUP ---------- */
-
-#videoPopup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.9);
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
-}
-
-#videoPopup iframe{
-width:560px;
-height:315px;
-border:none;
-border-radius:8px;
-}
-
-#closePopup{
-position:absolute;
-top:20px;
-right:30px;
-font-size:2rem;
-color:white;
-cursor:pointer;
-}
-
-/* ---------- MOBILE ---------- */
-
-@media(max-width:1100px){
-
-.cards{
-grid-template-columns:repeat(2,300px);
-gap:70px;
-}
-
-}
-
-@media(max-width:700px){
-
-.cards{
-grid-template-columns:1fr;
-gap:60px;
-}
-
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;font-family:'Poppins',sans-serif;background:#050000;color:#fff}
+#equalizer{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;pointer-events:none;display:block}
+#embers{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;opacity:0.6}
+.fire-glow{position:fixed;top:0;left:0;width:100vw;height:100vh;background:radial-gradient(ellipse at center,rgba(255,80,20,0.12) 0%,transparent 75%);z-index:1;animation:pulseGlow 6s ease-in-out infinite;pointer-events:none}
+@keyframes pulseGlow{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:0.9;transform:scale(1.08)}}
+#scrollWrapper{position:relative;z-index:10;display:flex;width:500%;height:100vh;transition:transform 0.6s cubic-bezier(0.22,1,0.36,1);will-change:transform}
+section{width:100vw;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 60px;position:relative;text-align:center;overflow-y:auto;background:rgba(5,0,0,0.25)}
+.fire-border{position:absolute;top:25px;bottom:25px;left:25px;right:25px;border:2px solid transparent;border-radius:28px;background:linear-gradient(45deg,#ff1a1a,#ff6600,#ffcc00,#ff6600,#ff1a1a) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:flowBorder 4s linear infinite;pointer-events:none;opacity:0.7}
+@keyframes flowBorder{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;background:linear-gradient(90deg,#ff3333,#ff6600,#ffcc00,#ff6600,#ff3333);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:300% 100%;animation:shineText 4s ease-in-out infinite;margin:0 0 12px;line-height:1.2}
+@keyframes shineText{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+h2{font-size:clamp(1.5rem,4vw,2.2rem);color:#ff8888;margin:10px 0 18px;text-shadow:0 0 14px rgba(255,120,120,0.7)}
+p{font-size:clamp(0.95rem,2.2vw,1.15rem);line-height:1.75;opacity:0.98;max-width:800px;margin:0 auto 14px}
+.tagline{font-size:clamp(1.1rem,2.5vw,1.35rem);color:#ffdd55;font-weight:600;margin:10px 0 28px;text-shadow:0 0 10px rgba(255,220,85,0.5)}
+h3{color:#ffaaaa;margin:22px 0 12px;font-size:1.3rem}
+.icon-badge{font-size:clamp(2.5rem,5vw,3.2rem);color:#ff6666;margin:10px 0 15px;animation:floatIcon 3.5s ease-in-out infinite;text-shadow:0 0 18px rgba(255,100,100,0.8)}
+@keyframes floatIcon{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.badge-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 14px;margin:22px 0 10px;max-width:900px}
+.badge{background:rgba(255,70,70,0.22);border:1px solid rgba(255,130,130,0.5);padding:9px 18px;border-radius:32px;font-size:0.92rem;display:flex;align-items:center;gap:7px;transition:all 0.25s ease;white-space:nowrap}
+.badge:hover{background:rgba(255,100,100,0.4);transform:translateY(-3px);box-shadow:0 6px 20px rgba(255,80,80,0.5);border-color:#ff7777}
+#progressBar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#ff4444,#ff7733);z-index:1000;transition:width 0.3s ease;box-shadow:0 0 12px rgba(255,100,30,0.8)}
+.scroll-cue{position:fixed;bottom:25px;right:30px;display:flex;flex-direction:column;align-items:center;gap:8px;color:#ffb0b0;font-size:0.85rem;opacity:0.9;z-index:100;animation:fadeInOut 2.5s ease-in-out infinite}
+@keyframes fadeInOut{0%,100%{opacity:0.5}50%{opacity:1}}
+.scroll-cue i{font-size:1.4rem;animation:bounceRight 1.8s ease infinite}
+@keyframes bounceRight{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}
+.contact-links{display:flex;gap:22px;margin-top:26px;flex-wrap:wrap;justify-content:center}
+.contact-links a{color:#fff;font-size:clamp(1.5rem,4vw,1.9rem);transition:all 0.3s ease;text-shadow:0 0 10px rgba(255,110,110,0.7);padding:8px;position:relative;display:flex;align-items:center;justify-content:center}
+.contact-links a::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:radial-gradient(circle,rgba(255,90,30,0.4),transparent 70%);opacity:0;transition:opacity 0.3s ease;pointer-events:none}
+.contact-links a:hover{color:#ffe080;transform:scale(1.25) rotate(5deg);text-shadow:0 0 20px rgba(255,230,140,0.95)}
+.contact-links a:hover::before{opacity:1;animation:firePulse 1.5s ease-in-out infinite}
+@keyframes firePulse{0%,100%{transform:scale(1);opacity:0.6}50%{transform:scale(1.35);opacity:1}}
+.contact-form-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(145deg,#ff5522,#cc3311,#ff4422);color:#fff;padding:14px 28px;border-radius:40px;font-size:1.05rem;font-weight:600;text-decoration:none;margin:18px 0 8px;cursor:pointer;border:none;box-shadow:0 4px 20px rgba(255,80,40,0.5),0 0 30px rgba(255,60,20,0.3),inset 0 -2px 6px rgba(0,0,0,0.25),inset 0 2px 6px rgba(255,220,150,0.15);transition:all 0.3s ease;position:relative;overflow:hidden}
+.contact-form-btn::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(transparent,rgba(255,220,120,0.3),transparent,rgba(255,170,70,0.2),transparent);animation:btnSpin 4s linear infinite;pointer-events:none}
+@keyframes btnSpin{to{transform:rotate(360deg)}}
+.contact-form-btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 30px rgba(255,80,40,0.7),0 0 50px rgba(255,60,20,0.5),0 0 80px rgba(255,40,10,0.3)}
+.contact-form-btn i{font-size:1.3rem;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.4))}
+.contact-form-btn .btn-flame{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:80px;height:30px;background:radial-gradient(ellipse at bottom,rgba(255,140,50,0.9),transparent 75%);border-radius:50%;filter:blur(6px);opacity:0;transition:opacity 0.25s;pointer-events:none}
+.contact-form-btn:hover .btn-flame{opacity:1;animation:flicker 0.4s infinite alternate}
+.hero{background:radial-gradient(circle at 35% 45%,rgba(255,50,50,0.06),transparent 70%)}
+.about{background:radial-gradient(circle at 65% 35%,rgba(255,100,50,0.05),transparent 70%)}
+.agritech{background:radial-gradient(circle at 50% 65%,rgba(255,70,70,0.05),transparent 70%)}
+.systems{background:radial-gradient(circle at 25% 75%,rgba(255,120,50,0.05),transparent 70%)}
+.vision{background:radial-gradient(circle at 55% 25%,rgba(255,60,60,0.08),transparent 70%)}
+.flame-trigger{position:relative;display:inline-block;cursor:default}
+.flame-trigger::after{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:70px;height:24px;background:radial-gradient(ellipse at bottom,rgba(255,130,40,0.9),transparent 75%);border-radius:50%;filter:blur(5px);opacity:0;transition:opacity 0.25s;pointer-events:none}
+.flame-trigger:hover::after{opacity:1;animation:flicker 0.35s infinite alternate}
+@keyframes flicker{0%{transform:translateX(-50%) scale(1);opacity:0.85}100%{transform:translateX(-50%) scale(1.08);opacity:1}}
+.whatsapp-fire-bubble{position:fixed;bottom:30px;right:30px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.wa-fire-ring{position:relative;width:68px;height:68px;border-radius:50%;cursor:pointer;animation:waFloat 3s ease-in-out infinite}
+.wa-fire-ring::before{content:'';position:absolute;top:-8px;left:-8px;width:84px;height:84px;border-radius:50%;background:radial-gradient(circle,#ff7733 0%,#ff4411 45%,transparent 75%);filter:blur(10px);opacity:0.9;animation:firePulse 2s ease-in-out infinite;z-index:-1}
+.wa-fire-ring::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(255,100,30,0.5) 0%,rgba(255,50,10,0.25) 35%,transparent 65%);filter:blur(15px);animation:firePulse 2s ease-in-out infinite 0.4s;z-index:-2}
+@keyframes firePulse{0%,100%{transform:translate(-50%,-50%) scale(0.92);opacity:0.75}50%{transform:translate(-50%,-50%) scale(1.2);opacity:1}}
+@keyframes waFloat{0%,100%{transform:translateY(0) rotate(-2deg)}25%{transform:translateY(-5px) rotate(1deg)}50%{transform:translateY(-3px) rotate(-1deg)}75%{transform:translateY(-8px) rotate(2deg)}}
+.wa-fire-ring a{width:68px;height:68px;border-radius:50%;background:linear-gradient(145deg,#ff6622,#dd3311,#ff5522);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.9rem;text-decoration:none;box-shadow:0 0 18px rgba(255,100,40,0.7),0 0 40px rgba(255,60,20,0.4),inset 0 -4px 8px rgba(0,0,0,0.3),inset 0 4px 8px rgba(255,220,150,0.2);transition:all 0.3s ease;position:relative;overflow:hidden}
+.wa-fire-ring a::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(transparent,rgba(255,220,120,0.35),transparent,rgba(255,170,70,0.25),transparent);animation:waSpin 3s linear infinite}
+@keyframes waSpin{to{transform:rotate(360deg)}}
+.wa-fire-ring a:hover{transform:scale(1.13);box-shadow:0 0 30px rgba(255,100,40,0.95),0 0 60px rgba(255,60,20,0.6),0 0 90px rgba(255,40,10,0.4)}
+.wa-fire-ring a i{position:relative;z-index:2;filter:drop-shadow(0 3px 6px rgba(0,0,0,0.6))}
+.wa-tooltip{background:linear-gradient(90deg,#ff7733,#ff4411);color:#fff;padding:6px 14px;border-radius:20px;font-size:0.8rem;font-weight:600;white-space:nowrap;box-shadow:0 4px 18px rgba(255,70,30,0.5);animation:tooltipBounce 2s ease-in-out infinite;position:relative}
+.wa-tooltip::after{content:'';position:absolute;bottom:-4px;right:25px;width:10px;height:10px;background:#ff5522;transform:rotate(45deg)}
+@keyframes tooltipBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.wa-sparks{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;pointer-events:none}
+#contactModal{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(8,0,0,0.92);backdrop-filter:blur(8px);display:flex;justify-content:center;align-items:center;z-index:10000;opacity:0;visibility:hidden;transition:all 0.4s cubic-bezier(0.22,1,0.36,1);padding:20px}
+#contactModal.active{opacity:1;visibility:visible}
+.modal-content{position:relative;width:100%;max-width:900px;max-height:90vh;background:linear-gradient(145deg,#1a0505,#2a0a0a,#1a0505);border-radius:24px;border:2px solid transparent;background-clip:padding-box;box-shadow:0 0 40px rgba(255,80,40,0.5),0 0 80px rgba(255,50,20,0.3),inset 0 0 60px rgba(255,100,40,0.08);overflow:hidden;display:flex;flex-direction:column}
+.modal-content::before{content:'';position:absolute;inset:-2px;border-radius:26px;background:linear-gradient(45deg,#ff2222,#ff6600,#ffcc00,#ff6600,#ff2222);z-index:-1;animation:flowBorder 5s linear infinite;background-size:300% 100%}
+.modal-header{display:flex;justify-content:space-between;align-items:center;padding:20px 28px;border-bottom:1px solid rgba(255,100,80,0.2)}
+.modal-header h3{margin:0;font-size:1.4rem;color:#ffcc88;text-shadow:0 0 10px rgba(255,150,80,0.5)}
+.modal-close{background:linear-gradient(145deg,#ff4422,#cc2211);border:none;width:42px;height:42px;border-radius:50%;color:#fff;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(255,60,30,0.5)}
+.modal-close:hover{transform:scale(1.1) rotate(90deg);box-shadow:0 6px 25px rgba(255,60,30,0.8),0 0 40px rgba(255,100,40,0.6)}
+.modal-body{flex:1;padding:0;overflow:hidden}
+.modal-body iframe{width:100%;height:100%;min-height:500px;border:none;display:block}
+.modal-footer{padding:14px 28px;text-align:center;font-size:0.85rem;color:#ffb090;opacity:0.85;border-top:1px solid rgba(255,100,80,0.15);background:rgba(30,8,8,0.6)}
+#contactModal::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,70,30,0.08) 0%,transparent 70%);pointer-events:none;animation:pulseGlow 4s ease-in-out infinite}
+#fireVideoPlayer{position:fixed;top:20px;right:20px;z-index:9998;width:280px;max-width:90vw;border-radius:16px;overflow:hidden;box-shadow:0 4px 25px rgba(255,70,30,0.6),0 0 50px rgba(255,50,20,0.4),0 0 80px rgba(255,30,10,0.25);background:linear-gradient(145deg,#1a0505,#2a0a0a);border:2px solid transparent;background-clip:padding-box;transition:all 0.3s ease;animation:playerFloat 4s ease-in-out infinite}
+@keyframes playerFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+#fireVideoPlayer::before{content:'';position:absolute;inset:-2px;border-radius:18px;background:linear-gradient(45deg,#ff3333,#ff6600,#ffcc00,#ff6600,#ff3333);z-index:-1;animation:flowBorder 4s linear infinite;background-size:300% 100%;opacity:0.8}
+#fireVideoPlayer:hover{transform:translateY(-2px);box-shadow:0 8px 35px rgba(255,70,30,0.8),0 0 70px rgba(255,50,20,0.6),0 0 100px rgba(255,30,10,0.4)}
+.video-container{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px}
+.video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.video-badge{position:absolute;top:10px;left:10px;background:linear-gradient(90deg,#ff4422,#ff7733);color:#fff;padding:4px 12px;border-radius:20px;font-size:0.75rem;font-weight:600;display:flex;align-items:center;gap:6px;z-index:5;box-shadow:0 3px 12px rgba(255,60,30,0.5);animation:badgePulse 2s ease-in-out infinite}
+@keyframes badgePulse{0%,100%{opacity:0.9;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+.video-badge i{animation:spinDot 1.5s linear infinite}
+@keyframes spinDot{to{transform:rotate(360deg)}}
+.video-controls{position:absolute;bottom:10px;right:10px;display:flex;gap:8px;z-index:5}
+.video-btn{width:32px;height:32px;border-radius:50%;background:rgba(30,8,8,0.85);border:1px solid rgba(255,100,80,0.5);color:#fff;font-size:0.9rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.25s ease;backdrop-filter:blur(4px)}
+.video-btn:hover{background:rgba(255,80,50,0.9);transform:scale(1.1);border-color:#ffcc88}
+@media(max-width:900px){#fireVideoPlayer{top:12px;right:12px;width:240px}}
+@media(max-width:600px){#fireVideoPlayer{top:10px;right:10px;width:200px}.video-badge{font-size:0.7rem;padding:3px 10px}.video-btn{width:28px;height:28px;font-size:0.8rem}}
+@media(max-width:400px){#fireVideoPlayer{width:180px}}
+@media(max-width:768px){section{padding:30px 25px}.fire-border{top:15px;bottom:15px;left:15px;right:15px}.badge{font-size:0.85rem;padding:7px 14px}.scroll-cue{bottom:15px;right:20px;font-size:0.8rem}.scroll-cue i{font-size:1.2rem}.whatsapp-fire-bubble{bottom:20px;right:20px}.wa-fire-ring{width:60px;height:60px}.wa-fire-ring a{width:60px;height:60px;font-size:1.6rem}.wa-fire-ring::before{width:76px;height:76px;top:-8px;left:-8px}.wa-tooltip{font-size:0.75rem;padding:5px 12px}.contact-form-btn{padding:12px 24px;font-size:0.95rem}.modal-content{max-width:95vw;max-height:95vh;border-radius:20px}.modal-header{padding:16px 20px}.modal-header h3{font-size:1.2rem}.modal-close{width:38px;height:38px;font-size:1.2rem}.modal-body iframe{min-height:400px}.modal-footer{padding:12px 20px;font-size:0.8rem}}
+@media(max-width:480px){.wa-tooltip{display:none}.contact-links{gap:16px}.contact-links a{font-size:1.5rem}.modal-body iframe{min-height:350px}}
 </style>
 </head>
-
 <body>
+<canvas id="equalizer"></canvas><canvas id="embers"></canvas><div class="fire-glow"></div><div id="progressBar"></div>
+<div class="scroll-cue"><span>Swipe or scroll →</span><i class="fa-solid fa-arrow-right-long"></i></div>
+<div class="whatsapp-fire-bubble"><div class="wa-tooltip">🔥 Chat with Tarang</div><div class="wa-fire-ring"><canvas class="wa-sparks" id="waSparks"></canvas><a href="https://wa.me/919479872399" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a></div></div>
 
-<canvas id="fireflies"></canvas>
-
-<!-- VIDEO POPUP -->
-
-<div id="videoPopup">
-<span id="closePopup">&times;</span>
-<iframe src="https://www.youtube.com/embed/yZYBxD-c0Kw?autoplay=1"></iframe>
+<!-- 🔥 YOUTUBE VIDEO PLAYER - UNMUTED WITH FALLBACK -->
+<div id="fireVideoPlayer" role="region" aria-label="Intro video player">
+  <div class="video-badge"><i class="fa-solid fa-circle-dot"></i><span>Playing</span></div>
+  <div class="video-container">
+    <iframe id="ytPlayer" src="https://www.youtube.com/embed/yZYBxD-c0Kw?autoplay=1&mute=0&controls=1&loop=1&playlist=yZYBxD-c0Kw&modestbranding=1&rel=0&playsinline=1" title="Tarang Karpe Intro" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="eager"></iframe>
+  </div>
+  <div class="video-controls">
+    <button class="video-btn" id="toggleMute" title="Toggle sound" aria-label="Toggle mute"><i class="fa-solid fa-volume-high"></i></button>
+  </div>
 </div>
 
-<!-- HERO -->
-
-<div class="hero">
-
-<h1>Welcome! 🔌</h1>
-
-<p>If you came here for serious corporate energy… you might be slightly lost.</p>
-
-<p>This page contains plants 🌱 experiments 🧠 coding 💻 curiosity 🤔 and a healthy amount of cat memes 😺</p>
-
-<p>Hi, I'm Tarang.</p>
-
+<div id="contactModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-content">
+    <div class="modal-header"><h3 id="modalTitle">🔥 Get in Touch</h3><button class="modal-close" id="closeModal" aria-label="Close form"><i class="fa-solid fa-xmark"></i></button></div>
+    <div class="modal-body"><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeoxLBfjsrEKDcecxxsWV97ZMlp9zAd35mQir2an3imT88xNA/viewform?embedded=true" title="Contact Form - Tarang Karpe" loading="lazy">Loading form...</iframe></div>
+    <div class="modal-footer">Form powered by Google • Responses go directly to Tarang 🌱</div>
+  </div>
 </div>
 
-<div class="cards">
-
-<!-- CARD 1 -->
-
-<div class="flip-card">
-<div class="flip-card-inner">
-
-<div class="flip-card-front">
-
-<img class="farm-logo"
-src="https://raw.githubusercontent.com/tarangkarpe/tarangkarpe.github.io/master/312055215_10160601886723319_9112974884910002691_n.jpg">
-
-<h2>Tarang Karpe</h2>
-
-<p class="tagline">Curiosity Powered Human</p>
-
-<p class="intro">
-
-Some days I’m growing plants 🌱  
-Some days I’m coding things 💻  
-Some days I’m cooking experiments 🍲  
-
-And occasionally reviewing cat memes for quality control 😺
-
-</p>
-
-</div>
-
-<div class="flip-card-back">
-
-<p class="back-text">
-
-Things I genuinely enjoy:
-
-🌿 experimenting with plants  
-🎧 music from many cultures  
-🎬 animated movies  
-🍳 cooking  
-😺 cat memes  
-
-Life = curiosity + experiments.
-
-</p>
-
-</div>
-
-</div>
-</div>
-
-<!-- CARD 2 -->
-
-<div class="flip-card">
-<div class="flip-card-inner">
-
-<div class="flip-card-front">
-
-<i class="fa-solid fa-graduation-cap fa-3x" style="color:#facc15"></i>
-
-<h2>Education</h2>
-
-<p class="intro">
-
-🎓 B.Sc Biotechnology  
-🎓 M.Sc Footwear Production (Major in Polymer Chemistry) 
-🎓 PGDM Production & Operations  
-
-Understanding how things work is fun.
-
-</p>
-
-</div>
-
-<div class="flip-card-back">
-
-<p class="back-text">
-
-Currently learning:
-
-📈 Trading markets  
-🧘 7 Chakras – Yoga  
-🌱 Aquaponics  
-🎬 Video production  
-
-Curiosity never retires.
-
-</p>
-
-</div>
-
-</div>
-</div>
-
-<!-- CARD 3 -->
-
-<div class="flip-card">
-<div class="flip-card-inner">
-
-<div class="flip-card-front">
-
-<i class="fa-solid fa-certificate fa-3x" style="color:#facc15"></i>
-
-<h2>Skills</h2>
-
-<p class="intro">
-
-🌱 Vermicomposting  
-🐟 Biofloc fish culture  
-💻 Full stack web development  
-📊 Advanced Excel & VBA  
-
-Yes… it's a strange mix.
-
-</p>
-
-</div>
-
-<div class="flip-card-back">
-
-<p class="back-text">
-
-Favorite skill: curiosity.
-
-If I don’t know something I try to figure it out.
-
-Sometimes learning happens…  
-Sometimes YouTube rabbit holes happen.
-
-</p>
-
-</div>
-
-</div>
-</div>
-
-<!-- CARD 4 -->
-
-<div class="flip-card">
-<div class="flip-card-inner">
-
-<div class="flip-card-front">
-
-<i class="fa-solid fa-seedling fa-3x" style="color:#facc15"></i>
-
-<h2>Horticulture</h2>
-
-<p class="intro">
-
-🍋 Lemon orchard  
-🌼 Marigold  
-🌸 Chrysanthemum  
-
-Plants quietly teach patience.
-
-</p>
-
-</div>
-
-<div class="flip-card-back">
-
-<p class="back-text">
-
-Future ideas growing:
-
-🌱 Plant nursery  
-🧪 Tissue culture lab  
-🌿 Aquaponics  
-
-Growing plants and ideas together.
-
-</p>
-
-</div>
-
-</div>
-</div>
-
-<!-- CARD 5 -->
-
-<div class="flip-card">
-<div class="flip-card-inner">
-
-<div class="flip-card-front">
-
-<i class="fa-solid fa-laptop-code fa-3x" style="color:#facc15"></i>
-
-<h2>Tech Side</h2>
-
-<p class="intro">
-
-Morning → plants 🌱  
-Night → coding 💻  
-
-Technology and nature actually work well together.
-
-</p>
-
-</div>
-
-<div class="flip-card-back">
-
-<p class="back-text">
-
-Ideas I enjoy:
-
-📊 data-driven farming  
-🤖 automation  
-📱 digital tools  
-🎬 video storytelling  
-
-Waiting for video exports builds patience.
-
-</p>
-
-</div>
-
-</div>
-</div>
-
-<!-- CARD 6 -->
-
-<div class="flip-card">
-<div class="flip-card-inner">
-
-<div class="flip-card-front">
-
-<i class="fa-solid fa-id-badge fa-3x" style="color:#facc15"></i>
-
-<h2>Connect</h2>
-
-<p class="intro">
-
-If you enjoy
-
-🌱 agriculture  
-💡 ideas  
-💻 technology  
-😺 memes
-
-we will probably get along.
-
-</p>
-
-</div>
-
-<div class="flip-card-back">
-
-<p>Email: tarangkarpe@gmail.com</p>
-
-<div class="contact">
-
-<a href="https://wa.me/917000338275"><i class="fa-brands fa-whatsapp"></i></a>
-<a href="mailto:tarangkarpe@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-<a href="https://tarangkarpe.github.io"><i class="fa-solid fa-globe"></i></a>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
+<div id="scrollWrapper">
+  <section class="hero"><div class="fire-border"></div><i class="fa-solid fa-fire icon-badge flame-trigger"></i><h1>Tarang Karpe</h1><p class="tagline">🔥 Where Science Meets Soil & Code</p><p>Multidisciplinary professional integrating <strong>biotechnology</strong>, <strong>technology</strong>, and <strong>field execution</strong> to build scalable, data-driven agricultural systems.</p><div class="badge-grid"><span class="badge"><i class="fa-solid fa-flask"></i> Biotech</span><span class="badge"><i class="fa-solid fa-seedling"></i> Agriculture</span><span class="badge"><i class="fa-solid fa-code"></i> Full-Stack Dev</span><span class="badge"><i class="fa-solid fa-gear"></i> Systems Optimization</span><span class="badge"><i class="fa-solid fa-chart-simple"></i> Data-Driven</span></div></section>
+  <section class="about"><div class="fire-border"></div><i class="fa-solid fa-graduation-cap icon-badge flame-trigger"></i><h2>🎓 Academic Foundation</h2><p><strong>B.Sc. Biotechnology</strong><br/>Bangalore University — Core understanding of biological systems, genetics, and lab techniques.</p><p><strong>M.Sc. Footwear Production</strong> (Polymer Chemistry)<br/>Footwear Design & Development Institute — Materials science, process engineering, quality systems.</p><p><strong>PGDM</strong> Production & Operations<br/>Indira Gandhi National Open University — Management frameworks, operational efficiency, strategic planning.</p><h3>📜 Professional Certifications</h3><div class="badge-grid"><span class="badge"><i class="fa-solid fa-certificate"></i> Vermicomposting</span><span class="badge"><i class="fa-solid fa-fish"></i> Biofloc Fish Production</span><span class="badge"><i class="fa-solid fa-file-excel"></i> Advanced Excel & VBA</span><span class="badge"><i class="fa-solid fa-laptop-code"></i> Full-Stack Web Development</span><span class="badge"><i class="fa-solid fa-vial"></i> Poultry Disease Management</span><span class="badge"><i class="fa-solid fa-leaf"></i> Sustainable Farming</span></div><p style="margin-top:18px">This diverse foundation enables a <strong>structured, analytical mindset</strong> — connecting biological complexity with technical precision and process optimization.</p></section>
+  <section class="agritech"><div class="fire-border"></div><i class="fa-solid fa-leaf icon-badge flame-trigger"></i><h2>🌱 Agriculture × 💻 Technology</h2><p><strong>Lemon Orchard Management</strong><br/>Hundreds of trees with precision spacing, resource allocation models, drip irrigation planning, and harvest cycle optimization.</p><p><strong>Floriculture Operations</strong><br/>High-demand crops like marigold — seasonal planning, market-responsive planting, yield forecasting, and post-harvest logistics.</p><h3>⚙️ System-Oriented Farming</h3><div class="badge-grid"><span class="badge"><i class="fa-solid fa-droplet"></i> Drip Irrigation Design</span><span class="badge"><i class="fa-solid fa-water"></i> Gravity-Fed Water Systems</span><span class="badge"><i class="fa-solid fa-chart-line"></i> Yield Analytics & Forecasting</span><span class="badge"><i class="fa-solid fa-layer-group"></i> Multilayer Cropping Systems</span><span class="badge"><i class="fa-solid fa-solar-panel"></i> Resource Efficiency Modeling</span></div><p style="margin-top:18px">Not conventional farming — <strong>engineered agriculture</strong>. Every decision is data-informed, every layout optimized for productivity per acre.</p></section>
+  <section class="systems"><div class="fire-border"></div><i class="fa-solid fa-microchip icon-badge flame-trigger"></i><h2>⚙️ System Optimization & Performance Engineering</h2><p><strong>Technical Expertise</strong><br/>Advanced Android configurations, shell scripting, kernel-level tuning, and performance benchmarking for responsiveness and efficiency.</p><p><strong>Core Mindset</strong><br/>Precision-focused, resource-aware, bottleneck-sensitive — skills that translate directly to controlled agricultural environments and automation systems.</p><h3>🔍 Cross-Domain Strengths</h3><div class="badge-grid"><span class="badge"><i class="fa-solid fa-bolt"></i> Latency Reduction Strategies</span><span class="badge"><i class="fa-solid fa-sliders"></i> Process Parameter Tuning</span><span class="badge"><i class="fa-solid fa-diagram-project"></i> System Bottleneck Analysis</span><span class="badge"><i class="fa-solid fa-robot"></i> Automation Logic Design</span><span class="badge"><i class="fa-solid fa-repeat"></i> Feedback Loop Implementation</span></div><p style="margin-top:18px">Whether optimizing code execution or crop growth cycles — the principle is the same: <strong>measure, analyze, refine, repeat</strong>.</p></section>
+  <section class="vision"><div class="fire-border"></div><i class="fa-solid fa-dna icon-badge flame-trigger"></i><h2>🚀 Future Vision: Plant Tissue Culture Facility</h2><p><strong>The Goal</strong><br/>Establish a scalable, commercially viable tissue culture lab for high-value plant propagation — combining sterile science with field-tested practicality.</p><h3>🔬 Integrated Foundation</h3><div class="badge-grid"><span class="badge"><i class="fa-solid fa-flask"></i> Sterile Technique Mastery</span><span class="badge"><i class="fa-solid fa-vial"></i> Media Formulation & Prep</span><span class="badge"><i class="fa-solid fa-temperature-arrow-up"></i> Controlled Environment Design</span><span class="badge"><i class="fa-solid fa-network-wired"></i> Process Standardization</span><span class="badge"><i class="fa-solid fa-seedling"></i> Plant Physiology Insight</span><span class="badge"><i class="fa-solid fa-code"></i> Monitoring System Development</span></div><p style="margin:26px 0 18px;font-size:1.05rem"><strong>Let's connect</strong> if you're passionate about:</p><div class="badge-grid" style="margin-bottom:20px"><span class="badge">🌱 Sustainable Agriculture</span><span class="badge">💡 Innovation & R&D</span><span class="badge">💻 Agri-Tech Solutions</span><span class="badge">🔬 Biotech Applications</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:12px;margin:18px 0;"><button class="contact-form-btn" id="openContactForm"><i class="fa-solid fa-fire-flame-curved"></i><span>Fill Contact Form</span><span class="btn-flame"></span></button><p style="font-size:0.9rem;opacity:0.85;margin:0">or connect directly:</p><div class="contact-links"><a href="https://tarangsfarm.github.io/TarangsFarm/" target="_blank" rel="noopener" title="Visit Tarang's Farm"><i class="fa-solid fa-tractor"></i></a><a href="mailto:tarangkarpe@gmail.com" title="Email Tarang"><i class="fa-solid fa-envelope"></i></a><a href="https://wa.me/919479872399" target="_blank" rel="noopener" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a></div></div><p style="margin-top:24px;font-size:0.92rem;opacity:0.75">© 2026 Tarang Karpe • Built with 🔥, curiosity, and clean code</p></section>
 </div>
 
 <script>
+// Horizontal scroll
+const scrollWrapper=document.getElementById('scrollWrapper'),progressBar=document.getElementById('progressBar'),totalSections=5;let currentSection=0,isAnimating=false;
+function updateProgress(){progressBar.style.width=`${(currentSection/(totalSections-1))*100}%`}
+function goToSection(i){if(isAnimating||i<0||i>=totalSections)return;isAnimating=true;currentSection=i;scrollWrapper.style.transform=`translateX(-${i*100}vw)`;updateProgress();if(i>0){document.querySelector('.scroll-cue').style.opacity='0';document.querySelector('.scroll-cue').style.pointerEvents='none'}setTimeout(()=>isAnimating=false,600)}
+window.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)<Math.abs(e.deltaX))return;e.preventDefault();if(e.deltaY>0&&currentSection<totalSections-1)goToSection(currentSection+1);else if(e.deltaY<0&&currentSection>0)goToSection(currentSection-1)},{passive:false});
+let tSX=0,tEX=0;window.addEventListener('touchstart',e=>{tSX=e.changedTouches[0].screenX},{passive:true});window.addEventListener('touchend',e=>{tEX=e.changedTouches[0].screenX;const d=tSX-tEX;if(Math.abs(d)<50)return;if(d>0&&currentSection<totalSections-1)goToSection(currentSection+1);else if(d<0&&currentSection>0)goToSection(currentSection-1)},{passive:true});
+window.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&currentSection<totalSections-1)goToSection(currentSection+1);else if(e.key==='ArrowLeft'&&currentSection>0)goToSection(currentSection-1)});updateProgress();
 
-/* CLOSE VIDEO */
+// Modal
+const modal=document.getElementById('contactModal'),openBtn=document.getElementById('openContactForm'),closeBtn=document.getElementById('closeModal');
+function openModal(){modal.classList.add('active');document.body.style.overflow='hidden';setTimeout(()=>closeBtn.focus(),300)}
+function closeModal(){modal.classList.remove('active');document.body.style.overflow='';openBtn.focus()}
+openBtn.onclick=openModal;closeBtn.onclick=closeModal;modal.onclick=e=>{if(e.target===modal)closeModal()};document.onkeydown=e=>{if(e.key==='Escape'&&modal.classList.contains('active'))closeModal()};
 
-document.getElementById("closePopup").onclick=function(){
-document.getElementById("videoPopup").style.display="none";
-};
+// YouTube Video - UNMUTED with fallback
+const ytPlayer=document.getElementById('ytPlayer'),toggleMuteBtn=document.getElementById('toggleMute'),muteIcon=toggleMuteBtn.querySelector('i');let isMuted=false;
+toggleMuteBtn.onclick=()=>{isMuted=!isMuted;const base='https://www.youtube.com/embed/yZYBxD-c0Kw',params=new URLSearchParams({autoplay:'1',mute:isMuted?'1':'0',controls:'1',loop:'1',playlist:'yZYBxD-c0Kw',modestbranding:'1',rel:'0',playsinline:'1'});ytPlayer.src=`${base}?${params}`;muteIcon.className=isMuted?'fa-solid fa-volume-xmark':'fa-solid fa-volume-high';toggleMuteBtn.title=isMuted?'Unmute':'Mute';toggleMuteBtn.setAttribute('aria-label',isMuted?'Unmute video':'Mute video')};
+// Fallback: if autoplay with sound fails, mute and retry
+window.addEventListener('load',()=>{const p=document.createElement('video').play();if(p&&p.catch)p.catch(()=>{if(!isMuted){ytPlayer.src=ytPlayer.src.replace('mute=0','mute=1');muteIcon.className='fa-solid fa-volume-xmark';isMuted=true}})});
 
-/* FIREFLIES */
+// Fire Equalizer
+const eqCanvas=document.getElementById('equalizer'),eqCtx=eqCanvas.getContext('2d');function resizeEq(){eqCanvas.width=window.innerWidth;eqCanvas.height=window.innerHeight;initBars()}
+let bars=[];function initBars(){const n=Math.max(30,Math.floor(window.innerWidth/28));bars=[];for(let i=0;i<n;i++)bars.push({x:(i/n)*eqCanvas.width,width:12+Math.random()*6,height:Math.random()*100,speed:0.02+Math.random()*0.04,phase:Math.random()*Math.PI*2,hue:10+Math.random()*40,opacity:0.5+Math.random()*0.4})}
+function animateEq(t){eqCtx.clearRect(0,0,eqCanvas.width,eqCanvas.height);bars.forEach(b=>{b.height=80+Math.sin(t*b.speed+b.phase)*120+Math.sin(t*0.003+b.phase*2)*60;b.height=Math.max(40,Math.min(b.height,eqCanvas.height*0.85));const by=eqCanvas.height,g=eqCtx.createLinearGradient(b.x,by-b.height,b.x,by);g.addColorStop(0,`hsla(${b.hue},100%,85%,${b.opacity})`);g.addColorStop(0.3,`hsla(${b.hue+10},100%,65%,${b.opacity*0.9})`);g.addColorStop(0.7,`hsla(${b.hue+20},100%,45%,${b.opacity*0.5})`);g.addColorStop(1,`hsla(${b.hue+30},100%,30%,0)`);eqCtx.fillStyle=g;eqCtx.fillRect(b.x-b.width/2,by-b.height,b.width,b.height);eqCtx.shadowBlur=20;eqCtx.shadowColor=`hsla(${b.hue},100%,70%,0.8)`;eqCtx.beginPath();eqCtx.arc(b.x,by-b.height,b.width*0.9,0,Math.PI*2);eqCtx.fillStyle=`hsla(${b.hue+5},100%,90%,${b.opacity*0.9})`;eqCtx.fill();eqCtx.shadowBlur=0});requestAnimationFrame(animateEq)}
 
-const canvas=document.getElementById("fireflies");
-const ctx=canvas.getContext("2d");
+// Embers
+const emCanvas=document.getElementById('embers'),emCtx=emCanvas.getContext('2d');function resizeEm(){emCanvas.width=window.innerWidth;emCanvas.height=window.innerHeight}
+const embers=[];for(let i=0;i<60;i++)embers.push({x:Math.random()*window.innerWidth,y:window.innerHeight+Math.random()*200,size:1+Math.random()*3,speed:0.5+Math.random()*1.5,drift:(Math.random()-0.5)*0.8,hue:15+Math.random()*45,opacity:0.3+Math.random()*0.6});
+function animateEm(t){emCtx.clearRect(0,0,emCanvas.width,emCanvas.height);embers.forEach(e=>{e.y-=e.speed;e.x+=e.drift+Math.sin(t*0.001+e.y*0.01)*0.3;if(e.y<-20){e.y=emCanvas.height+20;e.x=Math.random()*emCanvas.width}emCtx.beginPath();emCtx.arc(e.x,e.y,e.size,0,Math.PI*2);emCtx.fillStyle=`hsla(${e.hue},100%,75%,${e.opacity})`;emCtx.shadowBlur=12;emCtx.shadowColor=`hsla(${e.hue},100%,65%,0.9)`;emCtx.fill();emCtx.shadowBlur=0});requestAnimationFrame(animateEm)}
 
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+// WhatsApp sparks
+const waCanvas=document.getElementById('waSparks'),waCtx=waCanvas.getContext('2d');waCanvas.width=80;waCanvas.height=80;const sparks=[];for(let i=0;i<15;i++)sparks.push({angle:Math.random()*Math.PI*2,dist:28+Math.random()*15,speed:0.01+Math.random()*0.02,size:1+Math.random()*2,hue:20+Math.random()*40});
+function animateWa(t){waCtx.clearRect(0,0,80,80);sparks.forEach(s=>{s.angle+=s.speed;const x=40+Math.cos(s.angle)*s.dist,y=40+Math.sin(s.angle)*s.dist;waCtx.beginPath();waCtx.arc(x,y,s.size,0,Math.PI*2);waCtx.fillStyle=`hsla(${s.hue},100%,70%,0.8)`;waCtx.shadowBlur=8;waCtx.shadowColor=`hsla(${s.hue},100%,60%,0.9)`;waCtx.fill();waCtx.shadowBlur=0});requestAnimationFrame(animateWa)}
 
-let particles=[];
-
-for(let i=0;i<50;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2+1,
-dx:(Math.random()-.5)*.4,
-dy:(Math.random()-.5)*.4
-});
-}
-
-function draw(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="rgba(255,255,200,.7)";
-
-particles.forEach(p=>{
-
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fill();
-
-p.x+=p.dx;
-p.y+=p.dy;
-
-if(p.x<0||p.x>canvas.width)p.dx*=-1;
-if(p.y<0||p.y>canvas.height)p.dy*=-1;
-
-});
-
-requestAnimationFrame(draw);
-}
-
-draw();
-
+// Init
+window.addEventListener('load',()=>{resizeEq();resizeEm();animateEq(0);animateEm(0);animateWa(0)});
+window.addEventListener('resize',()=>{resizeEq();resizeEm()});
 </script>
-
 </body>
 </html>
