@@ -1,0 +1,13 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Block crawling of sensitive/internal paths (optional)
+Disallow: /private/
+Disallow: /tmp/
+
+# Point to your sitemap
+Sitemap: https://tarangkarpe.github.io/sitemap.xml
+
+# Crawl-delay suggestion (polite crawling)
+Crawl-delay: 10
